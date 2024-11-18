@@ -98,12 +98,8 @@ Before using this script, ensure that:
 ### Setup Steps
 
 1. **Prepare the Google Sheet**: 
-   - Open your Google Sheet where you want the data to be exported (e.g., `https://docs.google.com/spreadsheets/d/18_pPo8vw1yDHed8qJtNP8N8Vl1vaWz6PiSqMgSiL3bM`).
-   - Create a sheet named `From_GAD` where the data will be appended.
-   - Ensure your sheet has the following column headers in the first row:
-     ```
-     Campaign, Ad group, Keyword, Criterion Type, Max CPC, Current Keyword Max CPC, Clicks, Conv. rate, Cost / conv., CTR, Impr. (Abs. Top) %, ROAS
-     ```
+   - Open this Google Sheet and make a copy `https://docs.google.com/spreadsheets/d/18_pPo8vw1yDHed8qJtNP8N8Vl1vaWz6PiSqMgSiL3bM`).
+
 
 2. **Update the Script**:
    - Copy the script below into your Google Ads Scripts interface.
@@ -118,9 +114,17 @@ Before using this script, ensure that:
      ```excel
      =IF(G2<10, F2+0.25, IF(AND(H2>2, I2<75, J2>3, K2>0.5, L2>4), F2*1.15, IF(OR(H2<2, I2>75, J2<2, K2<0.3, L2<3), F2*0.85, F2)))
      ```
-   - This formula will adjust bids based on:
-     - **Clicks (G2)**: If fewer than 10 clicks, increase the bid by $0.25.
-     - **Conversion-related conditions (H2, I2, J2, K2, L2)**: If certain conversion metrics meet specific thresholds, adjust the bid by 1.15 (increase) or 0.85 (decrease).
+- **Formula Breakdown**:
+     - `G2<10`: If the keyword has fewer than 10 clicks, increase the bid by $0.25. You can change this threshold to suit your needs (e.g., `<20` for more clicks).
+     - `H2>2, I2<75, J2>3, K2>0.5, L2>4`: If the keyword performs well in conversion-related metrics (e.g., Conversion Rate `H2`, Cost/Conv. `I2`, etc.), increase the bid by 15%. You can adjust these values if you have different performance criteria.
+     - `H2<2, I2>75, J2<2, K2<0.3, L2<3`: If the keyword is underperforming (e.g., low Conversion Rate or high Cost/Conv.), decrease the bid by 15%. These thresholds can also be modified based on your specific performance needs.
+     - `F2`: The original Max CPC value that is being adjusted based on the conditions.
+
+   - **Customizing the Formula**:
+     - To **increase** bids for keywords with **higher clicks**, change the `G2<10` condition to a higher threshold (e.g., `G2<20` for 20 clicks).
+     - To adjust the **increase/decrease percentage** (currently 15%), you can modify the `F2*1.15` (for increase) or `F2*0.85` (for decrease) part of the formula. For example, use `F2*1.2` for a 20% increase or `F2*0.9` for a 10% decrease.
+     - If you want to adjust the bid based on **different metrics** (e.g., Cost/Conversion, Conversion Rate), change the column references `H2`, `I2`, `J2`, `K2`, and `L2` to other columns that are more relevant for your needs.
+
    
 ### How to Run the Script
 
