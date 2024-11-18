@@ -1,7 +1,34 @@
-//Spreadsheet Link: https://docs.google.com/spreadsheets/d/1TL3KIB1_xpUxOkOnVHEYEqyDhDRGOcFBZr3xP5HxWCg/edit?gid=0#gid=0
+/**
+ * Product Group Export Script for Google Ads
+ *
+ * This Google Ads Script exports product group data to a specified Google Sheet. The Google Sheet
+ * includes calculations in the "Bid Adjustments" sheet to automatically update bid recommendations
+ * based on performance metrics.
+ *
+ * Bid Adjustment Calculation:
+ * The sheet applies this logic to recommend bid adjustments:
+ * - Increase bid by $0.05 if clicks (column G) are < 10.
+ * - Increase bid by 15% if cost per conversion (column I) < 15 and ROAS (column J) > 7.5.
+ * - Decrease bid by 15% if cost per conversion > 15 or ROAS < 7.5.
+ * - Keep bid the same if none of the above conditions are met.
+ *
+ * Setup Instructions:
+ * 1. In Google Ads, go to Tools & Settings > Bulk Actions > Scripts.
+ * 2. Create a new script and paste this code into the editor.
+ * 3. Update the `SPREADSHEET_URL` variable below with your Google Sheet's URL.
+ *    Example: const SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1TL3KIB1_xpUxOkOnVHEYEqyDhDRGOcFBZr3xP5HxWCg/edit';
+ * 4. Click 'Preview' for a test run, or 'Run' to execute the export.
+ *
+ * Note:
+ * - The first run requires authorization for access to Google Ads and Google Sheets.
+ * - Automate exports by setting a schedule in the Google Ads Scripts editor.
+ * - Ensure the Google Sheet is accessible and configured with the correct columns.
+ */
+
+//Copy this spreadsheet: https://docs.google.com/spreadsheets/d/1TL3KIB1_xpUxOkOnVHEYEqyDhDRGOcFBZr3xP5HxWCg/edit?gid=0#gid=0
 
 function main() {
-  var SPREADSHEET_URL = 'Replace With Copy Of Spreadsheet Link';
+  var SPREADSHEET_URL = 'Replace with URL of your copied spreadsheet';
   var SHEET_NAME = 'From_GAD';
   
   var spreadsheet = SpreadsheetApp.openByUrl(SPREADSHEET_URL);
