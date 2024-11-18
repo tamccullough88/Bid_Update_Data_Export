@@ -1,5 +1,7 @@
+//Spreadsheet Link: https://docs.google.com/spreadsheets/d/1TL3KIB1_xpUxOkOnVHEYEqyDhDRGOcFBZr3xP5HxWCg/edit?gid=0#gid=0
+
 function main() {
-  var SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/15FGeeJzEaqbWOIy4eYEYYSgeVsjN9I9UplSpDqmBIKo/edit?gid=0#gid=0';
+  var SPREADSHEET_URL = 'Replace With Copy Of Spreadsheet Link';
   var SHEET_NAME = 'From_GAD';
   
   var spreadsheet = SpreadsheetApp.openByUrl(SPREADSHEET_URL);
