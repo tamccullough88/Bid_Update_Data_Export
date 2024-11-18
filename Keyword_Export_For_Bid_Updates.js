@@ -1,4 +1,44 @@
 /**
+ * Google Ads Keyword Performance Data Export and Bid Adjustment Script
+ * 
+ * This script extracts keyword performance data from your Google Ads account for the past 30 days. 
+ * It then appends this data to a specified Google Sheet, clearing any existing data first to avoid duplicates. 
+ * The following metrics are retrieved for each keyword:
+ *   - Campaign Name
+ *   - Ad Group Name
+ *   - Keyword
+ *   - Criterion Type
+ *   - Max CPC (Current Keyword Max CPC)
+ *   - Clicks
+ *   - Cost
+ *   - Impressions
+ *   - CTR (Click-Through Rate)
+ *   - Average CPC
+ *   - Impressions (Abs. Top) %
+ *   - Conversions
+ *   - Cost / Conversion
+ *   - Conversion Rate
+ *   - Conversion Value
+ *   - ROAS (Return on Ad Spend)
+ * 
+ * Once the data is exported to the Google Sheet, the script uses an Excel formula to adjust bids in the 'Max CPC' column
+ * based on keyword performance. The formula adjusts bids based on the following criteria:
+ *   - If the keyword has fewer than 10 clicks, increase the bid by $0.25.
+ *   - If the keyword meets certain performance thresholds, increase the bid by 15%.
+ *   - If the keyword is underperforming, decrease the bid by 15%.
+ * 
+ * This script is designed to automate the process of pulling keyword data, analyzing it, and adjusting bids based on predefined
+ * performance metrics, saving time in campaign management and potentially improving bid strategies.
+ * 
+ * HOW TO USE:
+ *   1. Set up the Google Sheet where you want to store the keyword performance data (e.g., 'From_GAD' sheet).
+ *   2. Replace the placeholder `Replace with your URL` with the actual Google Sheet URL.
+ *   3. Run the script in your Google Ads account by pasting it into the Google Ads Scripts interface.
+ *   4. The script will clear any existing data in the sheet, pull new keyword performance data, and append it to the sheet.
+ *   5. Use the formula in the 'Max CPC' column to adjust the keyword bids based on the exported metrics.
+ */
+
+/**
  * Main function to export keyword performance data from Google Ads into a Google Sheet.
  * This script pulls metrics for keywords over the last 30 days with impressions > 0.
  * It clears existing data in the specified sheet and appends updated data for analysis.
