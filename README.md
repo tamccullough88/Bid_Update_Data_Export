@@ -97,9 +97,11 @@ Before using this script, ensure that:
 
 ### Setup Steps
 
-1. **Prepare the Google Sheet**: 
-   - Open this Google Sheet and make a copy `https://docs.google.com/spreadsheets/d/18_pPo8vw1yDHed8qJtNP8N8Vl1vaWz6PiSqMgSiL3bM`).
-
+1. **Make a Copy of the Google Sheet**:
+   - Open the following Google Sheet template:  
+     [Google Sheet Template](https://docs.google.com/spreadsheets/d/18_pPo8vw1yDHed8qJtNP8N8Vl1vaWz6PiSqMgSiL3bM)
+   - Make a copy of the sheet by selecting **File** > **Make a Copy**.
+   - Save the copy to your Google Drive.
 
 2. **Update the Script**:
    - Copy the script below into your Google Ads Scripts interface.
